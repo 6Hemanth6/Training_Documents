@@ -366,3 +366,147 @@ Next ::::
 		- HostPath Volume 
 			
 		
+######################
+Day 25: 15th Jan. 2026
+######################	
+
+	- Controller Object :::
+	
+		ReplicaSet 
+	
+		Deployment 
+
+		ReplicaSet :::
+		
+			--> Replicaset is used to execute the specific no. of pods in the cluster.
+			--> Replicaset uses the Set Based Operator
+			--> Used to replicate the pods and able to scale up/down
+			--> The Replicasets will be automatically created, while creating Deployment Controller Object.
+		
+		
+		Deployment Controller Object :::
+		
+			--> It is used to deploy the pods and ensure high availability of pods by creating pod replicas 
+			--> 1. Create Muliple instance/replicas/copies of pods 
+				2. Used to Scale-Up / Scale-Down the Pods 
+				3. Used to Upgrade the application pods 
+				4. Used to Down-grade/roll-back the application pods
+			--> The upgrade/down-grade of application pods can be done without any downtime. 
+			--> To achieve zero-downtime during upgrade/down-grade, By Default, it used Rolling-Update Deployment Strategy.
+				- Supports self-healing.		
+			
+			
+			web_app_image:v1.0		==> 	web_app_image:v1.1
+			
+			pod_1.1:v1.0			==>		pod_1.1:v1.1	
+			pod_1.2:v1.0			==>		pod_1.2:v1.1
+			pod_1.3:v1.0			==>		pod_1.2:v1.0
+				
+				
+		Create Manifest file to work with Deployment Controller Object ::::		
+		
+		Deployment Controller Object creates :
+		
+			- Deployment 
+			- Replicaset
+			- Pod Instances 		
+		
+			
+	- Kubernetes Namespace ::::	
+
+		- Logical Partitioning of Kubernetes Cluster.
+		
+		- Namespaces are created based on the Envionments/Teams/Deployment Strategies.	
+		
+		
+		Environments :::
+		
+			Dev VM 
+			
+			QA  VM
+			
+			UAT VM 
+			
+			PROD VM1,2,3,4,5
+			
+			
+		Kubernetes_Master				(Non-Prod)
+		
+			Kubernetes_WorkerNode1,2,3,4,5,6,7,8,9,10
+			
+			
+		Kubernetes_Master				(Prod)
+		
+			Kubernetes_WorkerNode1,2,3,4,5,6,7,8,9,10
+			
+			
+		kubectl get ns 
+		
+		kubectl create namespace dev 
+			
+		kubectl create namespace qa
+
+		kubectl create namespace uat
+
+root@kmaster-node:~/kubernetes# vi nginx-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  namespace: dev
+  labels:
+	app: nginx
+	tier: dev
+spec:
+  containers:
+  - name: nginx-container
+	image: nginx
+	ports:
+	- containerPort: 80
+			
+		kubectl create -f nginx-pod.yaml 
+		
+		kubectl get pods -n dev	
+		
+		kubectl get pods -n kube-system
+			
+			
+
+Windows :
+
+C: 
+
+
+D:
+	Proj_Folder_Dev 	--> Logical ==> Namespace!
+	 file1 							==> Pods 
+	Proj_Folder_QA 		--> Logical 
+	 file1 	 
+	 
+		
+		
+- Kubernetes Volumes 
+	
+	- Used to maintain the Persistant Data!
+
+	- HostPath Volume:
+	
+		- It same as like Docker Volume.
+		- It is applicable at the Pod Level. 
+		- HostPath Volumes are created on the Host Machine, where the pod get deployed at runtime.
+		- Pods can use this Hostpath Volume to maintain the Input and out Files.
+		
+	
+Next ::
+
+	- Create HostPath Volume 
+	- Attach it to the Pods.
+
+	- Kubernetes Services 
+	
+		- NodePort 		
+		- ClusterIP		
+		- Load Balancer 		
+		
+	- Implement CICD Pipeline using Kubernetes.
