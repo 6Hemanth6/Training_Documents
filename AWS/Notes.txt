@@ -123,3 +123,120 @@ Day 34: 30th Jan. 2026
 	Working with IAM Services :
 	
 		- Login to AWS Console as a root user.
+
+
+
+		
+
+#######################
+Day 35: 2nd Feb. 2026
+#######################			
+		
+	EC2 Services ::::
+		
+		
+	- Launch EC2 Instances :::
+	
+	- using User Data Option
+	
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello, World!</h1>" > /var/www/html/index.html
+
+	- AMI ::: Amazon Machine Image :::
+	
+	
+	- Create AMI based on an EC2 Instance and Use that New AMI to launch EC2 Instance
+	
+	- Copy AMI and Launch.
+	
+	
+	
+Access to AWS Services ::::
+
+	- AWS Console 
+	
+	- AWS Cli/SDK :::
+	
+		- Login to AWS Console as an IAM User.
+		
+		- Create Access Key and Secret Key 
+
+Next ::::
+
+		
+		- Install and Perform AWS Configuration on Local Machine.
+		- Work with AWS Cli Commands 	
+	
+	- IAC Tools like Cloudformation / Terraform
+	
+	
+	
+#######################
+Day 36: 5th Feb. 2026
+#######################			
+		
+	EC2 Instance Storage :::
+
+		- EBS Volumes :::
+		
+		- EFS Volumes :::
+			
+		- S3 Services ::: --> Source Codes (GIT)
+		
+		
+		-> Volume : Used to store Files and Folders ::
+		
+			--> 
+			
+			
+		Storage Administration Team ::: 
+		
+			Use Case : EC2,Dbase,ServerLess,Hybrid,On-prem,Kubernetes 
+					 : Muliple-cloud Platform
+					 
+					 
+		- Volume level snapshot :::
+		
+			Jenkins -> Upgrade ?
+			
+				-> jdk / jenkins plugins / Jenkins service ==> Stored in EBS 
+				
+			- OS Upgrade -> 
+			
+			
+			https://uptime.is/
+			
+			https://aws.amazon.com/legal/service-level-agreements/
+			
+			https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html?icmpid=docs_amazons3_console
+			
+			
+{
+  "Version": "2012-10-17",
+  "Statement": [
+	{
+	  "Sid": "Statement1",
+	  "Effect": "Allow",
+	  "Principal": "*",
+	  "Action": [
+		"s3:GetObject"
+	  ],
+	  "Resource": "arn:aws:s3:::pl-0205-dummybkt1/*"
+	}
+  ]
+}			
+			
+			
+			
+			https://pl-0205-dummybkt1.s3.ap-south-1.amazonaws.com/index.html
+			
+			
+			
+			
+			
+			
+			
